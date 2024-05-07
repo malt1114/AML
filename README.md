@@ -55,7 +55,7 @@ Due to size limitations on GitHub the cleaned SunRGBD data and the notebook used
 
 Following [an existing architecture](https://arxiv.org/abs/1505.04597), a pytorch network was constructed and pre-trained using pytorch on the datasets to create 2 pre-trained models.
 
-![image](Architecture.pgn)
+![image](Architecture.png)
 
 
  
