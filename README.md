@@ -1,10 +1,10 @@
 
-This is Malthe Rødsgaard Pabst Lauridsen and Nicola Clark's project for the course Advanced Machine Learning for Data Science (Spring 2024) KSAMLDS1KU
+This is **Malthe Rødsgaard Pabst Lauridsen** and **Nicola Clark's** project for the course **Advanced Machine Learning for Data Science** (Spring 2024) KSAMLDS1KU
 
 
 
  
-This project planned on exploring image segmentation across domains, by fine-tuning two models from two different domains, on the opposite domain, to see what effect this has on the models. There are a multitude of datasets available for semantic segmentation, the ones we focused on are Cityscapes and SUN RGB-D.
+This project planned on exploring image segmentation across domains, by fine-tuning two models from two different domains, on the opposite domain, to see what effect this has on the models. There are a multitude of datasets available for semantic segmentation, the ones we focused on are [Cityscapes](https://www.kaggle.com/datasets/sakshaymahna/cityscapes-depth-and-segmentation) and [SUN RGB-D](https://rgbd.cs.princeton.edu/).
  
 
 The architecture that we used for this project was a CNN encoder-decoder network with skip connections. The evaluation metric typically used for image segmentation, and therefore also utilised in this project, is Mean Intersection over Union (MIoU), which describes the average area of overlap between the predicted segmentation and the ground truth divided by their union.
@@ -25,20 +25,21 @@ Compare pre-trained and fine-tuned models to generic segmentation baseline tasks
 ## Achieved Goals:
 Train a Model on the cityscapes dataset
 Evaluate the model on the cityscapes dataset
+Investigate some edge cases
 Learn A lot
  
 
  
 ## Preprocessing 
  
-A preprocessed version of the Cityscapes dataset from Kaggle was found and utilised for this project. 
+A [preprocessed version of the Cityscapes dataset from Kaggle](https://www.kaggle.com/datasets/sakshaymahna/cityscapes-depth-and-segmentation) was found and utilised for this project. 
  
-The SUNGRBD data could not be located in a preprocessed format. Therefore a pre-existing python script from github was amended to preprocess the data and match the format to that of the cleaned Cityscapes dataset.
+The SUNGRBD data could not be located in a preprocessed format. Therefore a [pre-existing python](https://github.com/luiszeni/SUNRGBDtoolbox_python/tree/master) script from github was amended to preprocess the data and match the format to that of the cleaned Cityscapes dataset.
  
-This script was altered to download an entire folder of the data, and to match the format of the Cityscapes dataset. The data that was cleaned was from the “SUNRGBD/kv2/kinect2data" folder, as the number of images lined up well with the amount in the cleaned cityscapes dataset. The re-formated data was then further cleaned as the labelling was very messy in places, i.e. many categories were mis-spelled or not grouped together (e.g. books, book, books). An existing mapping of the dataset to a segmentation of 37 categories was used for this. This mapping was extended to map other common labels to a seg37 category if there was one that matched, otherwise the label was changed to "Other". An additional label of "Computer" was added during this process as there were many labels that fit this category in the dataset.
+This script was altered to download an entire folder of the data, and to match the format of the Cityscapes dataset. The data that was cleaned was from the “SUNRGBD/kv2/kinect2data" folder, as the number of images lined up well with the amount in the cleaned cityscapes dataset. The re-formated data was then further cleaned as the labelling was very messy in places, i.e. many categories were mis-spelled or not grouped together (e.g. books, book, books). An [existing mapping](https://github.com/crmauceri/SUNRGBD_COCO/blob/main/seglistall.csv) of the dataset to a segmentation of 37 categories was used for this. This mapping was extended to map other common labels to a seg37 category if there was one that matched, otherwise the label was changed to "Other". An additional label of "Computer" was added during this process as there were many labels that fit this category in the dataset.
  
  
-Due to size limitations on GitHub the cleaned SunRGBD data and the notebook used for cleaning can be found on the following GitHub: https://github.com/NicolaClark/DataML
+Due to size limitations on GitHub the cleaned SunRGBD data and the notebook used for cleaning can be found on the following GitHub: [SunRGBD Clean Data](https://github.com/NicolaClark/DataML)
 
 
 
