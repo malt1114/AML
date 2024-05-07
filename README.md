@@ -33,7 +33,7 @@ Evaluate the model on the cityscapes dataset
 
 Investigate some edge cases
 
-Learn A lot
+Learn a lot
  
 
  
