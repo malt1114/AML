@@ -10,26 +10,26 @@ This project planned on exploring image segmentation across domains, by fine-tun
 The architecture that we used for this project was a CNN encoder-decoder network with skip connections. The evaluation metric typically used for image segmentation, and therefore also utilised in this project, is Mean Intersection over Union (MIoU), which describes the average area of overlap between the predicted segmentation and the ground truth divided by their union.
  
  
-** Our Main Goals: **
+## Our Main Goals: 
 Pre-train a model on each dataset until the point where they can be fine-tuned.
 Fine-tune the models on the opposite domains.
 Evaluate the models performances on both domains to see how the performance has changed (if it has).
  
-** Other Goals we explored: **
+## Other Goals we explored: 
 Investigate edge cases (specific scenes that underperform) in depth. Can you identify and improve the underlying problem?
 Investigate latent space representation differences between the models
 Compare pre-trained and fine-tuned models to generic segmentation baseline tasks
 
  
  
-** Achieved Goals: **
+## Achieved Goals:
 Train a Model on the cityscapes dataset
 Evaluate the model on the cityscapes dataset
 Learn A lot
  
 
  
-** Preprocessing **
+## Preprocessing 
  
 A preprocessed version of the Cityscapes dataset from Kaggle was found and utilised for this project. 
  
@@ -42,10 +42,10 @@ Due to size limitations on GitHub the cleaned SunRGBD data and the notebook used
 
 
 
-** Architecture **
+## Architecture 
 
 
-Following the existing architecture from ?????? a pytorch network was constructed and pre-trained using pytorch on the datasets to create 2 pre-trained models.
+Following [an existing architecture] (https://arxiv.org/abs/1505.04597), a pytorch network was constructed and pre-trained using pytorch on the datasets to create 2 pre-trained models.
 
 
 
@@ -66,7 +66,7 @@ Using a faster data loaded
 
 This meant that we had limited time remaining so we decided to focus on the Cityscapes model for the remainder of the project and see if we could focus on the task of semantic segmentation itself.
 
-** Results and More Corrections **
+## Results and More Corrections 
 
 The model on the Cityscapes dataset had a MIoU of 2.58. This was suspiciously low so we took a closer look at the outputs and realised that they were in the wrong format. We had labels that were integers and an output of floats. This is due to the original architecture needing to be adjusted from its original binary classification output layer architecture. We adjusted this by adding 20 channels (we had 20 classes) to the output layer alongside a softmax activation function. Argmax could then be used along the 20-channel-axis, in order to classify a picture’s pixels.
 
