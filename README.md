@@ -12,20 +12,27 @@ The architecture that we used for this project was a CNN encoder-decoder network
  
 ## Our Main Goals: 
 Pre-train a model on each dataset until the point where they can be fine-tuned.
+
 Fine-tune the models on the opposite domains.
+
 Evaluate the models performances on both domains to see how the performance has changed (if it has).
  
 ## Other Goals we explored: 
 Investigate edge cases (specific scenes that underperform) in depth. Can you identify and improve the underlying problem?
+
 Investigate latent space representation differences between the models
+
 Compare pre-trained and fine-tuned models to generic segmentation baseline tasks
 
  
  
 ## Achieved Goals:
 Train a Model on the cityscapes dataset
+
 Evaluate the model on the cityscapes dataset
+
 Investigate some edge cases
+
 Learn A lot
  
 
@@ -53,16 +60,11 @@ Following [an existing architecture] (https://arxiv.org/abs/1505.04597), a pytor
  
 At this point we ran into the following issues and figured out the following fixes (not in order):
 
-The image input was resided to a smaller size meaning the pixel values were changed by default
-Preserve the pixel values!! (KNN, not average)
--1 labels never output  due to ReLU in last activation layer
-Added +1 to all input labels so minimum was 0
-Epoch time: 10 min on CPU vs. 20-30 sec on GPU
-Utilised colab GPUs
-Multithreading helped a bit too
-Vectorising code
-Needed to resize outputs to enable code to be run without a for loop 
-Using a faster data loaded
+The image input was resided to a smaller size meaning the pixel values were changed by default : _Preserve the pixel values!! (KNN, not average)_
+     
+-1 labels never output due to ReLU in last activation layer: _Added +1 to all input labels so minimum was 0_
+     
+Epoch time: 10 min on CPU vs. 20-30 sec on GPU: _Utilised colab GPUs, Multithreading helped a bit too, Vectorising code, Needed to resize outputs to enable code to be run without a for loop, Using a faster data loader_
 
 
 This meant that we had limited time remaining so we decided to focus on the Cityscapes model for the remainder of the project and see if we could focus on the task of semantic segmentation itself.
